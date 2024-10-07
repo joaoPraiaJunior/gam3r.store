@@ -1,0 +1,19 @@
+import { Produto } from '@gstore/core';
+import Image from 'next/image';
+import Especificacoes from './Especificacoes';
+
+export interface InformacoesProdutoProps {
+	produto: Produto;
+}
+
+export default function InformacoesProduto(props: InformacoesProdutoProps) {
+	const { produto } = props;
+	return produto ? (
+		<div className="flex items-center bg-violet-dark rounded-xl p-5">
+			<figure className="flex-1 relative flex justify-center h-96">
+				<Image src={produto.imagem!} fill sizes="auto" className="object-cover p-7" alt="Imagem do Produto" />
+			</figure>
+			<Especificacoes produto={produto!} />
+		</div>
+	) : null;
+}
